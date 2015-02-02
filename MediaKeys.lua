@@ -113,7 +113,7 @@ local VanillaUpArgs = {
 }
 
 function OnEvent(event, key)
-	OutputLogMessage("event = %s, key = %s\n", event, key)
+	--OutputLogMessage("event = %s, key = %s\n", event, key)
 	
 	if event == "MOUSE_BUTTON_PRESSED" then
 		if key == ModifierKey then --user pressed modifier key 
@@ -130,6 +130,5 @@ function OnEvent(event, key)
 			VanillaUpFunctions[key](VanillaUpArgs[key])
 		end
 	end
-	OutputLogMessage("%s\n", tostring(ModifierKeyDown))
 end
 
