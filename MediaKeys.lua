@@ -9,13 +9,13 @@ local PLAY_PAUSE_TRACK  = 0x122
 --Key bindings
 local ModifierKey = 6
 
-local ModifiedFunctions = {
+local ModifiedDownFunctions = {
 	[3] = PressAndReleaseKey,
 	[4] = PressAndReleaseKey,
 	[7] = PressAndReleaseKey,
 	[8] = PressAndReleaseKey
 }
-local ModifiedArgs = {
+local ModifiedDownArgs = {
 	[3] = PLAY_PAUSE_TRACK,
 	[4] = MUTE_KEY,
 	[7] = PREVIOUS_TRACK,
@@ -28,8 +28,8 @@ function OnEvent(event, key)
 	if event == "MOUSE_BUTTON_PRESSED" then
 		if key == ModifierKey then --user pressed modifier key 
 			ModifierKeyDown = true
-		elseif ModifierKeyDown then --access modified key bindings
-			ModifiedFunctions[key](ModifiedArgs[key])
+		elseif ModifierKeyDown and ModifiedDownFunctions[key] then --access modified key bindings
+			ModifiedDownFunctions[key](ModifiedDownArgs[key])
 		else --access vanilla key bindings
 			--TODO
 		end
