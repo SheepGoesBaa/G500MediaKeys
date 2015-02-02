@@ -4,14 +4,6 @@ local IsMidOperation = false
 --settings
 local VolumeIncrement = 5
 
---Key constants
-local MUTE_KEY          = 0x120
-local NEXT_TRACK        = 0x119
-local PREVIOUS_TRACK    = 0x110
-local PLAY_PAUSE_TRACK  = 0x122
-local VOLUME_UP			= 0x130
-local VOLUME_DOWN		= 0x12E
-
 --key functions
 function CloseWindow()
 	if IsMidOperation then
@@ -30,9 +22,9 @@ function ChangeVolume(direction)
 	IsMidOperation = true
 	local VolumeKey
 	if direction == 1 then
-		VolumeKey = VOLUME_UP
+		VolumeKey = "volume_up"
 	else
-		VolumeKey = VOLUME_DOWN
+		VolumeKey = "volume_down"
 	end
 	for i = 1, VolumeIncrement do
 		PressAndReleaseKey(VolumeKey)
@@ -75,11 +67,11 @@ local ModifiedDownFunctions = {
 	[10]= ChangeVolume
 }
 local ModifiedDownArgs = {
-	[3] = PLAY_PAUSE_TRACK,
-	[4] = MUTE_KEY,
+	[3] = "media_play_pause",
+	[4] = "volume_mute",
 	[5] = nil,
-	[7] = PREVIOUS_TRACK,
-	[8] = NEXT_TRACK,
+	[7] = "media_prev_track",
+	[8] = "media_next_track",
 	[9] = 1,
 	[10]= -1
 }
