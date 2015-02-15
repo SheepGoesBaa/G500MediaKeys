@@ -12,6 +12,7 @@ function CloseWindow()
 	IsMidOperation = true
 	PressKey("lctrl")
 	PressAndReleaseKey("w")
+	PressAndReleaseKey("comma")
 	ReleaseKey("lctrl")
 	IsMidOperation = false
 end
